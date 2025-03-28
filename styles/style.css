@@ -184,3 +184,31 @@ body {
     font-style: normal;
     font-display: swap;
   }
+  .flag{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    width: 100vw;
+  
+  }
+  .flag-content{
+    min-width: 100px;
+    max-width: 300px;
+    min-height: 400px;
+    background-color: orange;
+     /* เพื่อให้ absolute contentอ้างอิงจากdivเเม่*/
+    position: relative;
+  }
+  .flag-content::after {
+    content: "";
+    position: absolute;
+    bottom: -20px; /* ดันลงมาต่ำกว่าขอบล่าง */
+    left: 50%; /* ตั้งต้นจากกึ่งกลาง */
+    transform: translateX(-50%); /* เลื่อนกลับมาซ้ายครึ่งหนึ่งของตัวเอง */
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;  /* ขอบซ้ายโปร่งใส */
+    border-right: 50px solid transparent; /* ขอบขวาโปร่งใส */
+    border-top: 20px solid orange; /* สามเหลี่ยมเกิดจากขอบบน */
+  }
+  

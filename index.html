@@ -1,72 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For Practicing</title>
-    <link rel="stylesheet" href="./styles/style.css">
-</head><script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-<body>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <body>
+    <!-- ส่วนโครงสร้าง HTML เดิมคงไว้เหมือนต้นฉบับ -->
     <div class="parallax">
-        <section class="parallax__header">
-          <div class="parallax__visuals">
-            <div class="parallax__black-line-overflow"></div>
-            <div data-parallax-layers class="parallax__layers">
-              <img src="./sky.jpg" loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img">
-              <img src="./kmutt_cover-remove.png" loading="eager" ; data-parallax-layer="2" alt="" class="parallax__layer-img">
-              <div data-parallax-layer="3" class="parallax__layer-title">
-                <h2 class="parallax__title">PHAKAPHOL</h2>
-              </div>
-              <img src="./pk.png" loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img">
+      <!-- Parallax Header Section -->
+      <section class="parallax__header">
+        <div class="parallax__visuals">
+          <div class="parallax__black-line-overflow"></div>
+          <div data-parallax-layers class="parallax__layers">
+            <img src="./sky.jpg" loading="eager" width="800" data-parallax-layer="1" alt="" class="parallax__layer-img" />
+            <img src="./kmutt_cover-remove.png" loading="eager" data-parallax-layer="2" alt="" class="parallax__layer-img" />
+            <div data-parallax-layer="3" class="parallax__layer-title">
+              <h2 class="parallax__title">PHAKAPHOL</h2>
             </div>
-            <div class="parallax__fade"></div>
+            <img src="./pk.png" loading="eager" width="800" data-parallax-layer="4" alt="" class="parallax__layer-img" />
           </div>
-        </section>
-        <section class="parallax__content">
-        <h1>Hello</h1>  
-        </section>
-      </div>
-      <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-      <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-      <script >
+          <div class="parallax__fade"></div>
+        </div>
+      </section>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // Register GSAP Plugins
-          gsap.registerPlugin(ScrollTrigger);
-          // Parallax Layers
-          document.querySelectorAll('[data-parallax-layers]').forEach((triggerElement) => {
-            let tl = gsap.timeline({
-              scrollTrigger: {
-                trigger: triggerElement,
-                start: "0% 0%",
-                end: "100% 0%",
-                scrub: 0
-              }
-            });
-            const layers = [
-              { layer: "1", yPercent: 70 },
-              { layer: "2", yPercent: 80 },
-              { layer: "3", yPercent: 40 },
-              { layer: "4", yPercent: 10 }
-            ];
-            layers.forEach((layerObj, idx) => {
-              tl.to(
-                triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`),
-                {
-                  yPercent: layerObj.yPercent,
-                  ease: "none"
-                },
-                idx === 0 ? undefined : "<"
-              );
-            });
+      <!-- Flag Section -->
+      <section class="parallax__content" style="background-color: black;">
+        <div class="flag" data-flag>
+          <div class="flag-content" data-parallax-layer="5">
+            <img src="https://www.kmutt.ac.th/wp-content/uploads/2020/09/KMUTT_CI_Primary_Logo-Full-300x300.png" alt="" />
+            <h1 style="text-align: center; color: white">KMUTT</h1>
+          </div>
+          <div class="flag-content" data-parallax-layer="5">
+            <img src="https://www.ssps.ac.th/wp-content/uploads/2024/02/cropped-logopng.png" alt="" width="300" />
+            <h1 style="text-align: center; color: white">Sarasas Pittaya</h1>
+          </div>
+          <div class="flag-content" data-parallax-layer="5">
+            <img src="https://www.sar.ac.th/uploads/20140327200215Iq4eGx0/contents/2017101773452.png" alt="" width="290" />
+            <h1 style="text-align: center; color: white">Sang Aroon Pranakorn Kindergarten</h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- Parallax Footer Section -->
+      <section class="parallax__header">
+        <!-- โครงสร้างเหมือน header แรก -->
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // ลงทะเบียน GSAP Plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax Layers Animation
+        document.querySelectorAll("[data-parallax-layers]").forEach((triggerElement) => {
+          let tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: triggerElement,
+              start: "0% 0%", // เริ่มเมื่อ top ของ element ถึง top ของ viewport
+              end: "100% 0%", // สิ้นสุดเมื่อ bottom ของ element ถึง top ของ viewport
+              scrub: 0, // การเคลื่อนไหวจะ sync กับ scroll ทันที
+            },
+          });
+
+          // กำหนดการเคลื่อนที่ของแต่ละ layer
+          const layers = [
+            { layer: "1", yPercent: 70 },
+            { layer: "2", yPercent: 80 },
+            { layer: "3", yPercent: 40 },
+            { layer: "4", yPercent: 10 },
+          ];
+
+          layers.forEach((layerObj, idx) => {
+            tl.to(
+              triggerElement.querySelectorAll(`[data-parallax-layer="${layerObj.layer}"]`), // เลือก element ตาม data attribute
+              {
+                yPercent: layerObj.yPercent, // เคลื่อนที่ในแนวตั้งตามเปอร์เซ็นต์
+                ease: "none", // ไม่มี easing เพื่อให้เคลื่อนที่ linear
+              },
+              idx === 0 ? undefined : "<" // ถ้าไม่ใช่ layer แรก ให้เริ่มพร้อมกับ layer ก่อนหน้า
+            );
           });
         });
-        /* Lenis */
-        const lenis = new Lenis();
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => {lenis.raf(time * 1000);});
-        gsap.ticker.lagSmoothing(0);</script>
-     
-</body>
+
+        // Flag Animation
+        document.querySelectorAll("[data-flag]").forEach((flagElement) => {
+          // Animation แรก: Flag ค่อยๆยาวขึ้นตาม scroll
+          let flagBegin = gsap.timeline({
+            scrollTrigger: {
+              trigger: flagElement,
+              start: "top 80%", // เริ่มเมื่อ flag อยู่ที่ 80% จาก top ของ viewport
+              end: "center 50%", // สิ้นสุดเมื่อ flag อยู่กึ่งกลาง viewport
+              scrub: 1, // sync กับ scroll แบบ smooth
+              markers: true, // ถ้าต้องการ debug ให้เปลี่ยนเป็น true
+            },
+          });
+
+          // Animation ที่สอง: หลังจากหยุดตรงกลางแล้วเคลื่อนต่อ
+          let gsapFlag = gsap.timeline({
+            scrollTrigger: {
+              trigger: flagElement,
+              start: "center 50%", // เริ่มจากจุดที่ flagBegin สิ้นสุด
+              end: "bottom 20%", // สิ้นสุดเมื่อ flag ใกล้ bottom ของ viewport
+              scrub: 1, // sync กับ scroll แบบ smooth
+              markers: false,
+            },
+          });
+
+          // การเคลื่อนไหวของ flag
+          flagBegin
+            .fromTo(
+              flagElement.querySelectorAll('[data-parallax-layer="5"]'),
+              {
+                scaleY: 0, // เริ่มจากขนาด 0 (ซ่อน)
+                transformOrigin: "top", // ขยายจากด้านบน
+              },
+              {
+                scaleY: 1, // ขยายจนเต็มขนาดปกติ
+                ease: "none", // การขยายแบบ linear
+                stagger: 0.1, // ให้แต่ละ flag-content ขยายตามลำดับ ห่างกัน 0.1 วินาที
+              }
+            );
+
+          gsapFlag.to(
+            flagElement.querySelectorAll('[data-parallax-layer="5"]'),
+            {
+              yPercent: -50, // เคลื่อนขึ้น 50% ของความสูง
+              ease: "none", // การเคลื่อนที่แบบ linear
+              stagger: 0.1, // เคลื่อนที่ตามลำดับ
+            }
+          );
+        });
+
+        // Lenis Smooth Scroll Setup
+        const lenis = new Lenis({
+          smoothWheel: true, // เปิดใช้งาน smooth scrolling สำหรับ mouse wheel
+          smoothTouch: false, // ปิด smooth scrolling สำหรับ touch เพื่อความ responsive
+        });
+
+        // อัพเดท ScrollTrigger เมื่อ Lenis scroll
+        lenis.on("scroll", ScrollTrigger.update);
+
+        // Integrate Lenis กับ GSAP ticker
+        gsap.ticker.add((time) => {
+          lenis.raf(time * 1000); // อัพเดท animation frame
+        });
+
+        gsap.ticker.lagSmoothing(0); // ป้องกัน lag ใน animation
+      });
+    </script>
+  </body>
 </html>
