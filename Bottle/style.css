@@ -1,0 +1,36 @@
+.banner{
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    
+}
+.banner .product{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    bottom: 170px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    transition: 0.7s;
+    --left: 0px
+    
+}
+.banner .product .soda{
+    background: 
+    var(--url) var(--left), 30px,
+    url("./bottle.png") 
+   ;
+    /* 100% of element height */
+    background-size: auto 100%;
+    width: 280px ;
+    /* use aspect ration instead */
+    aspect-ratio: 2/4.1;
+    background-blend-mode:multiply;
+    mask-image: url("./bottle.png");
+    mask-size: auto 100%;
+    transition: 2s;
+}
+.banner .product:hover{
+   --left : -500px;
+}
